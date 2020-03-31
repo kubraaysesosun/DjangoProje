@@ -1,0 +1,1 @@
+"# Django Turistik Mekan Projesi" 
