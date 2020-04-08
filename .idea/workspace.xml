@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8a587181-c958-42bd-9de9-d78bea9564a3" name="Default Changelist" comment="Content değişti">
+    <list default="true" id="8a587181-c958-42bd-9de9-d78bea9564a3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/header.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/product/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project1/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/project1/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/product/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project1/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/project1/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,11 +55,12 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/home/templates" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.CommitDialog" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Django\project1\home\templates" />
       <recent name="C:\Django\project1\product" />
     </key>
   </component>
@@ -109,7 +109,7 @@
       <workItem from="1585657001610" duration="15865000" />
       <workItem from="1585679294618" duration="1017000" />
       <workItem from="1585761568970" duration="4383000" />
-      <workItem from="1586377844410" duration="2720000" />
+      <workItem from="1586377844410" duration="7636000" />
     </task>
     <task id="LOCAL-00001" summary="Content değişti">
       <created>1585679674250</created>
@@ -118,7 +118,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585679674250</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Admin panel ckeditor eklendi.">
+      <created>1586381109872</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1586381109872</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,7 +133,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Content değişti" />
-    <option name="LAST_COMMIT_MESSAGE" value="Content değişti" />
+    <MESSAGE value="Admin panel ckeditor eklendi." />
+    <option name="LAST_COMMIT_MESSAGE" value="Admin panel ckeditor eklendi." />
   </component>
   <component name="WindowStateProjectService">
     <state x="274" y="54" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585679595524">
@@ -134,10 +142,14 @@
     </state>
     <state x="-1128" y="-36" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738/-1440.-132.1440.870@-1440.-132.1440.870" timestamp="1584888419290" />
     <state x="274" y="54" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738/-1440.-132.1440.870@0.0.1366.738" timestamp="1585679595524" />
-    <state x="321" y="0" key="CommitChangelistDialog2" timestamp="1585680029073">
+    <state x="413" y="119" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1586385745078">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="321" y="0" key="CommitChangelistDialog2/0.0.1366.738/-1440.-132.1440.870@0.0.1366.738" timestamp="1585680029073" />
+    <state x="413" y="119" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.738/-1440.-132.1440.870@0.0.1366.738" timestamp="1586385745078" />
+    <state x="321" y="0" key="CommitChangelistDialog2" timestamp="1586381108817">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="321" y="0" key="CommitChangelistDialog2/0.0.1366.738/-1440.-132.1440.870@0.0.1366.738" timestamp="1586381108817" />
     <state x="-940" y="61" key="FileChooserDialogImpl" timestamp="1584887876430">
       <screen x="-1440" y="-132" width="1440" height="870" />
     </state>
@@ -183,14 +195,14 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1366.738/-1440.-132.1440.870@0.0.1366.738" timestamp="1584893293339" />
-    <state x="275" y="105" key="Vcs.Push.Dialog.v2" timestamp="1585680039242">
+    <state x="275" y="105" key="Vcs.Push.Dialog.v2" timestamp="1586381308704">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="105" key="Vcs.Push.Dialog.v2/0.0.1366.738/-1440.-132.1440.870@0.0.1366.738" timestamp="1585680039242" />
-    <state x="494" y="288" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586381052381">
+    <state x="275" y="105" key="Vcs.Push.Dialog.v2/0.0.1366.738/-1440.-132.1440.870@0.0.1366.738" timestamp="1586381308704" />
+    <state x="494" y="288" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586381293986">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="494" y="288" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738/-1440.-132.1440.870@0.0.1366.738" timestamp="1586381052381" />
+    <state x="494" y="288" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738/-1440.-132.1440.870@0.0.1366.738" timestamp="1586381293986" />
     <state x="170" y="105" width="1116" height="556" key="dock-window-1" timestamp="1585675730208">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

@@ -9,14 +9,26 @@ from home.models import Setting, ContactForm
 def index(request):
     setting=Setting.objects.get(pk=1)
     #context buraya yükleyeceğimiz veriler ürün listesi kategori listesi vs
-    context = {'setting': setting}
+    context = {'setting': setting, 'page':'home'}
     return render(request, 'index.html', context)
+def hakkimizda(request):
+    setting=Setting.objects.get(pk=1)
+    #context buraya yükleyeceğimiz veriler ürün listesi kategori listesi vs
+    context = {'setting': setting, 'page':'hakkimizda'}
+    return render(request, 'hakkimizda.html', context)
+
 def referanslar(request):
     setting = Setting.objects.get(pk=1)
+    context = {'setting': setting}
+    return render(request, 'referanslar.html', context)
 
 def iletisim(request):
     setting=Setting.objects.get(pk=1)
-    form=ContactForm(request.POST)
+    context = {'setting': setting}
+    return render(request, 'iletisim.html', context)
+
+
+    """form=ContactForm(request.POST)
     if form.is_valid():
         data=ContactForm() #model ile bağlantı kur
         data.name=form.clean_data['name']  #formdan bilgiyi al
@@ -30,4 +42,4 @@ def iletisim(request):
 
     form=ContactForm()
     context={'setting':setting, 'form': form}
-    return render(request, 'iletisim.html', context)
+    return render(request, 'iletisim.html', context)"""
