@@ -1,21 +1,102 @@
 {% load static %}
-<header class="top-navbar">
+
+
+
+	<!-- Start header -->
+	<header class="top-navbar">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container">
 				<a class="navbar-brand" href="index.html">
-					<img src="{% static 'images/logo.png'%}" alt="" />
+					<img src="images/logo.png" alt="" />
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
 				  <span class="navbar-toggler-icon"></span>
 				</button>
+
+            <script>
+                $(function () {
+                    $("#query").autocomplete({
+                        source: "/search_auto/",
+                        select: function (event,ui) {//item selected
+                            AutoCompleteSelectHandler(event,ui)
+
+                        },
+                        minLength:2,
+                    });
+                });
+                function AutoCompleteSelectHandler(event,ui)
+                {
+                    var selectedObj = ui.item;
+                }
+            </script>
+
 				<div class="collapse navbar-collapse" id="navbars-rs-food">
+                    <form action="/search/" method="post" class="blog-search-form">
+                        {% csrf_token %}
+                        <input id="query" name="query" placeholder="Search blog" type="text">
+
+                        {% load mptt_tags %}
+                            <select style="float: left" name="catid" class="input search-categories">
+                                <option value="0">All Categories</option>
+                                {% recursetree category %}
+                                    {% if node.is_leaf_node %}
+                                    <option value="{{ node.id }}">{{ node.title }}</option>
+                                    {% endif %}
+                                    {% if not node.is_leaf_node %}
+                                    <optgroup label="{{ node.title }}">
+                                        {{ children }}
+                                    </optgroup>
+                                    {% endif %}
+                                {% endrecursetree %}
+                            </select>
+
+                        <button class="search-btn">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+					</form>
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active"><a class="nav-link" href="/">Anasayfa</a></li>
 
+						<li class="nav-item"><a class="nav-link" href="/hakkimizda">Hakkımızda</a></li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="/product/" id="dropdown-a" data-toggle="dropdown">Galeri</a>
 
-                        <li class="nav-item"><a class="nav-link" href="/hakkimizda">Hakkımızda</a></li>
+                            {% load mptt_tags %}
+
+							<div class="dropdown-menu" aria-labelledby="dropdown-a" >
+                            {% recursetree category %}
+                                    <a class="dropdown-item" href="/category/{{ node.id }}/{{node.slug}}">{{node.title}}
+                                    {% if not node.is_leaf_node %}
+                                    <ul class="children">
+                                        <li><a href="/category/{{ node.id }}/{{node.slug}}">{{ children }}</a></li>
+                                    </ul>
+                                    {% endif %}
+                                    </a>
+
+                            {% endrecursetree %}
+
+							</div>
+
+						</li>
+						<li class="nav-item"><a class="nav-link" href="/referanslar">Referanslar</a></li>
 						<li class="nav-item"><a class="nav-link" href="/iletisim">İletişim</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/referanslar">Referanslar</a></li>
+                        <li class="nav-item dropdown">
+                                    {% if user.id is not None %}
+
+                                    <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">{{ user.first_name }}</a>
+                                    {% else %}
+
+                                    <a  href="/login" >Login</a>/<a href="/signup" >Join</a>
+                                    {% endif %}
+
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#"><i></i>MyAccount</a> </li>
+                                        <li><a href="#"><i></i>MyAccount</a> </li>
+                                        <li><a href="#"><i></i>MyAccount</a> </li>
+                                        <li><a href="/logout"><i></i>Logout</a> </li>
+                                    </ul>
+
+                                </li>
 					</ul>
 				</div>
 			</div>
