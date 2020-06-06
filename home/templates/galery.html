@@ -1,0 +1,59 @@
+{% extends 'homebase.html' %}
+{% load static %}
+
+
+{% block title %} {{categorydata.title}} Galeri {% endblock %}
+{% block keywords %} {{ categorydata.keywords }} Galeri {% endblock %}
+{% block description %} {{ categorydata.description }} Galeri {% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+{% endblock %}
+{% block slider %} {% include 'header.html' %} {% endblock %}
+{% block header %}
+    {% include 'slider.html' %}
+{% endblock %}
+
+
+
+
+{% block content %}
+
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="gallery-box">
+		<div class="container">
+			<div class="row">
+
+			</div>
+			<div class="tz-gallery">
+            <div class="col-lg-12">
+					<div class="heading-title text-center">
+						<h2>Gallery</h2>
+
+					</div>
+				</div>
+                {% for rs in pictures %}
+
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4 col-lg-4">
+                            <a >
+                                <h3 class="title"><a href="/product/{{ rs.id }}/{{ rs.slug }}">{{ rs.title }}</a>  </h3>
+                                <img src="{{ rs.image.url }}"><a class="btn btn-lg btn-circle btn-outline-new-white" href="/product/{{ rs.id }}/{{ rs.slug }}">İncele</a> </img>
+
+
+
+                            </a>
+                        </div>
+
+                    </div>
+                {% endfor %}
+			</div>
+		</div>
+	</div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
