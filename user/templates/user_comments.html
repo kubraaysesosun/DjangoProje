@@ -1,0 +1,80 @@
+{% extends 'homebase.html' %}
+
+{% block title %} Comments {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+{% endblock %}
+{% block header %} {% include 'header.html' %} {% endblock %}
+
+
+{% block content %}
+
+    <div class="all-page-title page-breadcrumb">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Yorumlarım</h1>
+            </div>
+        </div>
+    </div>
+    </div>
+        <div class="container">
+    <ul class="breadcrumb">
+        <li ><a href="/"> Yorumlarım</a> </li>
+    </ul>
+    </div>
+
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    {% include "user_panel.html" %}
+                </div>
+                <div class="col-md-9">
+
+
+
+                    <div class="col-md-9">
+                        <div class="title"><h4>Kullanıcı Yorumları</h4></div>
+                        <table class="table">
+                            <tr>
+                                <th class="text-left">Fotoğraf</th>
+                                <th class="text-left">Rate</th>
+                                <th class="text-left">Subject</th>
+                                <th class="text-left">Comment</th>
+                                <th class="text-left">Status</th>
+                                <th class="text-left">Date</th>
+                                <th class="text-left">Detail</th>
+
+
+                            </tr>
+                            {% for rs in comments %}
+                                <tr>
+                                    <td class="text-left">
+                                        <a href="/product/{{ rs.pictures.id }}/{{ rs.pictures.slug }}">
+                                        {{ rs.pictures.title }}
+                                        </a>
+                                    </td>
+                                    <td class="text-left">{{ rs.pictures.id }}</td>
+                                    <td class="text-left">{{ rs.rate }}</td>
+                                    <td class="text-left">{{ rs.subject }}</td>
+                                    <td class="text-left">{{ rs.comment }}</td>
+                                    <td class="text-left">{{ rs.status }}</td>
+                                    <td class="text-left">{{ rs.create_at }}</td>
+                                    <td class="text-left">
+                                        <a class="btn-primary" href="/user/deletecomment/{{ rs.id }}" onclick="return confirm('Will be Delete! Are you sure?')">Yorumu Sil</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

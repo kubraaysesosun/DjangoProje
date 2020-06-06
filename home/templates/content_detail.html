@@ -1,0 +1,49 @@
+{% extends 'homebase.html' %}
+{% load static %}
+
+{% block title %} {{ pictures.title }} {% endblock %}
+{% block keywords %} {{ pictures.keywords }} {% endblock %}
+{% block description %} {{ pictures.description }} {% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+{% endblock %}
+
+{% block slider %} {% include 'header.html' %} {% endblock %}
+{% block header %}
+    {% include 'slider.html' %}
+{% endblock %}
+
+
+{% block content %}
+        <div class="all-page-title page-breadcrumb">
+		<div class="container text-center">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1>Galeri</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End All Pages -->
+
+	<!-- Start blog details -->
+	<div class="blog-box">
+
+         <div class="container">
+             <div class="row">
+                 <img src="{{ content.image.url }}" height="388" align="left" style="padding: 10px; border-radius:25px;">
+
+                      {{ content.detail|safe }}
+             </div>
+             <div class="row">
+                     {% for rs in images %}
+                         <img src="{{ rs.image.url }}" height="280" alt="">
+                     {% endfor %}
+             </div>
+         </div>
+         <div class="container">
+
+         </div>
+	</div>
+{% endblock %}

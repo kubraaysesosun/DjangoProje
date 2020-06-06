@@ -1,0 +1,56 @@
+{% extends 'homebase.html' %}
+
+{% block title %} Comments {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+    {% load static %}
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+{% endblock %}
+{% block slider %} {% include 'slider.html' %} {% endblock %}
+
+
+{% block content %}
+
+
+
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    {% include "user_panel.html" %}
+                </div>
+                <div class="col-md-9">
+                    <div class="title">
+                        <h4 class="title">Fotoğraf Ekle
+                            <a class="btn-primary" href="/user/addcontent">Fotoğraf Ekle</a>
+                        </h4>
+                    </div>
+                    <div class="content">
+                        {% load static %}
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <fieldset class="form-group">
+                                {{ form.media }}
+                                {{ form.as_p }}
+                            </fieldset>
+                            <div class="form-group">
+                                <button class="btn-primary" type="submit">Kaydet</button>
+                            </div>
+                        </form>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

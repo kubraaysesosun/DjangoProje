@@ -1,0 +1,98 @@
+{% extends 'homebase.html' %}
+{% load static %}
+{% block title %} Comments {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+{% endblock %}
+{% block header %} {% include 'header.html' %} {% endblock %}
+
+
+
+{% block content %}
+
+
+    <div class="all-page-title page-breadcrumb">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Fotoğraflarım</h1>
+            </div>
+        </div>
+    </div>
+    </div>
+            <div class="container">
+        <ul class="breadcrumb">
+            <li ><a href="/"> Fotoğraflarım</a> </li>
+        </ul>
+        </div>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    {% include "user_panel.html" %}
+                </div>
+                <div class="col-md-9">
+                    <div class="title">
+                        <h4 class="title">Fotoğraflarım
+                            <a class="btn-primary" href="/user/addcontent">Fotoğraf Ekle</a>
+                        </h4>
+                    </div>
+
+
+                    <div class="col-md-9">
+
+
+                        <table class="table">
+                            <tr>
+                                <th class="text-left">Fotoğraf</th>
+                                <th class="text-left">Title</th>
+                                <th class="text-left">Type</th>
+                                <th class="text-left">Status</th>
+                                <th class="text-left">Date</th>
+                                <th class="text-left">Detail</th>
+
+
+                            </tr>
+                            {% for rs in contents %}
+                                <tr>
+
+                                    <td class="text-left">
+                                        <a href="/content/{{ rs.id }}/{{ rs.slug }}">
+                                            <img src="{{ rs.image.url }}" style="height: 38px;">
+                                        </a>
+
+                                    </td>
+                                    <td class="text-left">
+                                        <a href="/content/{{ rs.id }}/{{ rs.slug }}">
+                                            {{ rs.title }}
+                                        </a>
+                                    </td>
+
+                                    <td class="text-left">{{ rs.type }}</td>
+
+                                    <td class="text-left">
+                                        <a href="javascript:"; onclick="window.open('/user/contentaddimage/{{ rs.id }}', 'gallery', 'height=680, width=888, top=50,left=150')">Galeri</a>
+                                    </td>
+
+                                    <td class="text-left">{{ rs.status }}</td>
+                                    <td class="text-left">{{ rs.created_at }}</td>
+                                    <td class="text-left">
+                                        <a class="btn-primary" href="/user/contentedit/{{ rs.id }}">Edit</a>
+                                    </td>
+                                 <td class="text-left">
+                                        <a class="btn-primary" href="/user/contentdelete/{{ rs.id }}" onclick="return confirm('Will be Delete! Are you sure?')">Sil</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

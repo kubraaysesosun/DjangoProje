@@ -78,7 +78,10 @@
 							</div>
 
 						</li>
+
+
 						<li class="nav-item"><a class="nav-link" href="/referanslar">Referanslar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/faq">SSS</a></li>
 						<li class="nav-item"><a class="nav-link" href="/iletisim">İletişim</a></li>
                         <li class="nav-item dropdown">
                                     {% if user.id is not None %}
@@ -86,13 +89,13 @@
                                     <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">{{ user.first_name }}</a>
                                     {% else %}
 
-                                    <a  href="/login" >Login</a>/<a href="/signup" >Join</a>
+                                    <a class="nav-link dropdown-toggle" href="/login" >Login</a>/<a  href="/signup" >Join</a>
                                     {% endif %}
 
                                     <ul class="dropdown-menu">
-                                        <li><a href="#"><i></i>MyAccount</a> </li>
-                                        <li><a href="#"><i></i>MyAccount</a> </li>
-                                        <li><a href="#"><i></i>MyAccount</a> </li>
+                                        <li><a href="/user"><i></i>Hesabım</a> </li>
+                                        <li><a href="/user/contents"><i></i>Fotoğraflarım</a> </li>
+                                        <li><a href="/user/comments"><i></i>Yorumlarım</a> </li>
                                         <li><a href="/logout"><i></i>Logout</a> </li>
                                     </ul>
 

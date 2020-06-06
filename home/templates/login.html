@@ -8,10 +8,23 @@
     <link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
 {% endblock %}
 
-{% block slider %} {% include 'slider.html' %}  {% endblock %}
+{% block slider %} {% include 'header.html' %} {% endblock %}
+{% block header %}
+    {% include 'slider.html' %}
+{% endblock %}
 
 {% block content %}
 
+<div>
+<div class="all-page-title page-breadcrumb">
+		<div class="container text-center">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1>Login</h1>
+				</div>
+			</div>
+		</div>
+	    </div>
     <div class="section">
         <div class="container">
             <div class="row">
@@ -45,5 +58,5 @@
             </div>
         </div>
     </div>
-
+</div>
 {% endblock %}

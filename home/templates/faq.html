@@ -1,0 +1,61 @@
+{% extends 'homebase.html' %}
+{% load static %}
+{% block title %} Sıkça Sorulan Sorular {% endblock %}
+{% block keywords %} {% endblock %}
+{% block description %}  {% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+    <script>
+    $( function () {
+        $("#accordion").accordion({
+            collapsible: true
+        });
+
+    });
+    </script>
+{% endblock %}
+{% block slider %} {% include 'header.html' %} {% endblock %}
+{% block header %}
+    {% include 'slider.html' %}
+{% endblock %}
+{% block content %}
+ <div class="all-page-title page-breadcrumb">
+		<div class="container text-center">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1>Sıkça Sorulan Sorular</h1>
+				</div>
+			</div>
+		</div>
+	    </div>
+    <div id="breadcrumb">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="/"> Anasayfa</a> </li>
+        </ul>
+        <ul>
+            <li class="active"><h1>Sıkça Sorulan Sorular</h1></li>
+        </ul>
+    </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div id="accordion">
+                    {% for rs in faq %}
+                    <h3>{{ rs.question }}</h3>
+                    <div>
+                        <p>{{ rs.answer }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

@@ -6,21 +6,27 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
+from content.models import Menu, Content, CImages
 from home.forms import SearchForm, SignUpForm
-from home.models import Setting, ContactFormMessage, ContactFormu
+from home.models import Setting, ContactFormMessage, ContactFormu, UserProfile, FAQ
 from product.models import Product, Category, Images, Comment
 
 
 def index(request):
+    current_user=request.user
     setting=Setting.objects.get(pk=1)
     sliderdata=Product.objects.all()[:4]
     category=Category.objects.all()
+    menu=Menu.objects.all()
     dayimages=Product.objects.all()
     lastimages = Product.objects.all().order_by('-id')[:4]
     randimages = Product.objects.all().order_by('?')[:4]
+    announcements=Content.objects.filter(type='duyuru', status='True').order_by('-id')[:4]
     #context buraya yükleyeceğimiz veriler ürün listesi kategori listesi vs
     context = {'setting': setting,
                'category': category,
+               'menu': menu,
+               'announcements':announcements,
                'page':'home',
                'sliderdata':sliderdata,
                'dayimages':dayimages,
@@ -96,6 +102,19 @@ def pictures_detail(request,id,slug):
              'comment': comment}
     return render(request, 'pictures_detail.html',context)
 
+def content_detail(request,id,slug):
+    category = Category.objects.all()
+    picture = Product.objects.filter(category_id=id)
+    link='product/'+str(picture[0].id)+'/'+picture[0].slug
+
+    return HttpResponseRedirect(link)
+
+
+
+
+"""def picture_asearch(request):
+    return render(request, 'asearch.html')"""
+
 def pictures_search(request):
     if request.method=='POST':
         form= SearchForm(request.POST)
@@ -162,6 +181,13 @@ def signup_view(request):
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
             login(request,user)
+            #create data in profile table for user
+            current_user=request.user
+            data=UserProfile()
+            data.user_id=current_user.id
+            data.image="images/users/user.jpg"
+            data.save()
+            messages.success(request, "Hoş geldiniz.. Sitemize başarılı bir şekilde üye oldunuz..")
             return HttpResponseRedirect('/')
 
     form = SignUpForm()
@@ -171,3 +197,61 @@ def signup_view(request):
                }
 
     return render(request, 'signup.html', context)
+
+
+
+def menu(request,id):
+    try:
+        content=Content.objects.get(menu_id=id)
+        link='/content/'+str(content.id)+'/menu'
+        return HttpResponseRedirect(link)
+
+    except:
+        messages.warning(request, "Hata! İlgili içerik bulunamadı")
+        link='/error'
+        return HttpResponseRedirect(link)
+
+def contentdetail(request,id,slug):
+    category=Category.objects.all()
+    menu=Menu.objects.all()
+    try:
+        content=Content.objects.get(pk=id)
+        images=CImages.objects.filter(content_id=id)
+
+        context={
+            'content':content,
+            'category': category,
+            'menu': menu,
+            'images': images,
+        }
+
+        return render(request, 'content_detail.html', context)
+    except:
+        messages.warning(request, "Hata! İlgili içerik bulunamadı")
+        link='/error'
+        return HttpResponseRedirect(link)
+
+
+def error(request):
+    category = Category.objects.all()
+    menu = Menu.objects.all()
+
+    context = {
+        'category': category,
+        'menu': menu,
+    }
+
+    return render(request, 'error_page.html', context)
+
+
+def faq(request):
+    category = Category.objects.all()
+    menu = Menu.objects.all()
+    faq=FAQ.objects.all().order_by('ordernumber')
+    context = {
+        'category': category,
+        'menu': menu,
+        'faq': faq,
+    }
+
+    return render(request, 'faq.html', context)

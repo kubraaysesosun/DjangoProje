@@ -81,6 +81,9 @@ class Images(models.Model):
         return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
     image_tag.short_description='Image'
 
+
+
+
 class Comment(models.Model):
     STATUS = {
         ('New','Yeni'),
@@ -90,7 +93,7 @@ class Comment(models.Model):
     }
     pictures = models.ForeignKey(Product,on_delete=models.CASCADE)
     user =models.ForeignKey(User,on_delete=models.CASCADE)
-    subject = models.CharField( max_length=255)
+    subject = models.CharField(max_length=255)
     comment = models.CharField(blank=True, max_length=255)
     rate=models.IntegerField(blank=True, default=0)
     status = models.CharField(max_length=10, choices=STATUS,default='New')
